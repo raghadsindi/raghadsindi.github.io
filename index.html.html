@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raghad Sindi — Data Science Portfolio</title>
+<meta name="description" content="Raghad Sindi — Data Science student in Jeddah, Saudi Arabia. Applied ML, Arabic NLP research, and AI tooling.">
+<meta property="og:title" content="Raghad Sindi — Data Science Portfolio">
+<meta property="og:description" content="Data Science student turning messy data into decisions — applied ML, Arabic NLP research, and AI-driven tooling.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230B1220'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='16' font-weight='700' fill='%232DD4BF' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F6F0E4;
+    --panel: #FFFDF8;
+    --panel-alt: #EFE4CE;
+    --border: rgba(90,66,42,0.15);
+    --text: #4A3B2C;
+    --muted: #8A7860;
+    --teal: #B5652D;
+    --amber: #7C8B54;
+    --grid: rgba(90,66,42,0.06);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:
+      linear-gradient(var(--grid) 1px, transparent 1px) 0 0/40px 40px,
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px) 0 0/40px 40px,
+      var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    line-height:1.5;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+
+  /* NAV */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(246,240,228,0.85);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--border);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .brand{font-family:'Space Grotesk';font-weight:600;font-size:17px;letter-spacing:0.3px;}
+  .brand .dot{color:var(--teal);}
+  .navlinks{display:flex;gap:28px;font-size:14px;color:var(--muted);}
+  .navlinks a:hover{color:var(--teal);}
+  .navlinks{display:none;}
+  @media(min-width:720px){.navlinks{display:flex;}}
+
+  /* HERO / TOP READOUT BAR */
+  header.hero{padding:64px 0 32px;}
+  .status-row{
+    display:flex;align-items:center;gap:8px;
+    font-size:12px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;
+    margin-bottom:20px;
+  }
+  .status-dot{width:7px;height:7px;border-radius:50%;background:var(--teal);box-shadow:0 0 8px var(--teal);animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.4;}}
+  h1{font-family:'Space Grotesk';font-size:44px;font-weight:700;letter-spacing:-0.5px;}
+  h1 .accent{color:var(--teal);}
+  .role{font-size:17px;color:var(--muted);margin-top:10px;max-width:560px;}
+  .contact-row{display:flex;flex-wrap:wrap;gap:18px;margin-top:20px;font-size:13px;color:var(--muted);}
+  .contact-row a{border-bottom:1px solid transparent;}
+  .contact-row a:hover{color:var(--teal);border-color:var(--teal);}
+
+  /* STAT TILES */
+  .stat-grid{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:40px;
+  }
+  @media(min-width:640px){.stat-grid{grid-template-columns:repeat(4,1fr);}}
+  .stat-tile{
+    background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:18px 18px 16px;
+    position:relative;overflow:hidden;
+  }
+  .stat-tile::before{
+    content:"";position:absolute;top:0;left:0;width:100%;height:2px;
+    background:linear-gradient(90deg,var(--teal),transparent);
+  }
+  .stat-label{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
+  .stat-value{font-family:'JetBrains Mono';font-size:28px;font-weight:600;color:var(--text);}
+  .stat-value span{font-size:14px;color:var(--teal);}
+
+  /* SECTION GENERIC */
+  section{padding:56px 0;border-top:1px solid var(--border);}
+  .section-head{display:flex;align-items:baseline;gap:10px;margin-bottom:28px;}
+  .section-tag{font-family:'JetBrains Mono';font-size:12px;color:var(--teal);}
+  .section-title{font-family:'Space Grotesk';font-size:24px;font-weight:600;}
+
+  /* TIMELINE / GANTT */
+  .timeline{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:24px;}
+  .tl-axis{display:flex;justify-content:space-between;font-family:'JetBrains Mono';font-size:11px;color:var(--muted);margin-bottom:16px;padding:0 4px;}
+  .tl-row{display:flex;align-items:center;gap:16px;margin-bottom:18px;}
+  .tl-row:last-child{margin-bottom:0;}
+  .tl-label{width:150px;flex-shrink:0;font-size:13px;color:var(--muted);}
+  .tl-label strong{display:block;color:var(--text);font-size:13.5px;font-weight:600;}
+  .tl-track{position:relative;flex:1;height:22px;background:var(--panel-alt);border-radius:6px;overflow:hidden;}
+  .tl-bar{position:absolute;top:0;height:100%;border-radius:6px;display:flex;align-items:center;padding:0 10px;font-size:11px;font-family:'JetBrains Mono';white-space:nowrap;color:#FFFDF8;font-weight:600;}
+  .bar-edu{left:0%;width:100%;background:linear-gradient(90deg,#C9B48A,var(--teal));color:#FFFDF8;}
+  .bar-xenel{left:78%;width:16%;background:var(--amber);}
+  .bar-lead{left:0%;width:60%;background:#A99878;color:#FFFDF8;}
+  .bar-lead2{left:0%;width:60%;background:#A99878;color:#FFFDF8;}
+
+  /* PROJECT CARDS */
+  .project-grid{display:grid;grid-template-columns:1fr;gap:16px;}
+  @media(min-width:720px){.project-grid{grid-template-columns:1fr 1fr;}}
+  .project-card{
+    background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:22px;
+    transition:border-color .2s, transform .2s;
+  }
+  .project-card:hover{border-color:var(--teal);transform:translateY(-2px);}
+  .project-card.featured{
+    grid-column:1/-1;background:linear-gradient(135deg,var(--panel),var(--panel-alt));
+    border-color:rgba(181,101,45,0.35);
+  }
+  .p-eyebrow{font-family:'JetBrains Mono';font-size:11px;color:var(--amber);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;}
+  .p-title{font-family:'Space Grotesk';font-size:18px;font-weight:600;margin-bottom:8px;}
+  .p-desc{font-size:13.5px;color:var(--muted);margin-bottom:14px;}
+  .tag-row{display:flex;flex-wrap:wrap;gap:6px;}
+  .tag{font-family:'JetBrains Mono';font-size:11px;background:var(--panel-alt);border:1px solid var(--border);color:var(--teal);padding:3px 8px;border-radius:5px;}
+
+  /* SKILL MATRIX */
+  .matrix{display:grid;grid-template-columns:1fr;gap:20px;}
+  @media(min-width:720px){.matrix{grid-template-columns:repeat(3,1fr);}}
+  .matrix-col{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:20px;}
+  .matrix-head{font-family:'JetBrains Mono';font-size:12px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);}
+  .chip-list{display:flex;flex-wrap:wrap;gap:8px;}
+  .chip{font-size:12.5px;background:var(--panel-alt);border:1px solid var(--border);padding:5px 10px;border-radius:6px;color:var(--text);}
+  .chip.core{border-color:var(--teal);color:var(--teal);}
+
+  /* CERTS */
+  .cert-list{display:flex;flex-direction:column;gap:10px;}
+  .cert-item{display:flex;align-items:center;gap:14px;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:14px 16px;}
+  .cert-icon{font-family:'JetBrains Mono';font-size:11px;color:#FFFDF8;background:var(--teal);width:26px;height:26px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .cert-name{font-size:14px;font-weight:500;}
+  .cert-org{font-size:12px;color:var(--muted);}
+
+  /* LANG */
+  .lang-row{display:flex;gap:14px;flex-wrap:wrap;}
+  .lang-tile{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:14px 18px;min-width:140px;}
+  .lang-name{font-weight:600;font-size:14px;}
+  .lang-level{font-family:'JetBrains Mono';font-size:12px;color:var(--teal);margin-top:4px;}
+
+  footer{padding:48px 0 60px;text-align:center;color:var(--muted);font-size:13px;border-top:1px solid var(--border);}
+  footer a{color:var(--teal);}
+
+  .reveal{opacity:1;transform:none;}
+  .js-ready .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease, transform .6s ease;}
+  .js-ready .reveal.in{opacity:1;transform:translateY(0);}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">RAGHAD<span class="dot">.</span>SINDI</div>
+    <div class="navlinks">
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#certs">Certifications</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="status-row"><span class="status-dot"></span> Available for new grad roles · Jeddah, Saudi Arabia</div>
+    <h1>Raghad Sindi</h1>
+    <p class="role">Data Scientist skilled in building machine learning models, business intelligence dashboards, and AI-driven tools — turning raw, messy data into decisions people can act on, from statistical analysis to enterprise-grade AI solutions.</p>
+    <div class="contact-row">
+      <a href="mailto:prog.raghad.s@gmail.com">prog.raghad.s@gmail.com</a>
+      <span>·</span>
+      <a href="tel:0549885406">0549885406</a>
+      <span>·</span>
+      <a href="https://www.linkedin.com/in/raghad-s-sindi-02b7a5257" target="_blank">linkedin.com/in/raghad-s-sindi-02b7a5257</a>
+      <span>·</span>
+      <a href="https://github.com/raghadsindi" id="github-link" target="_blank">github.com/raghadsindi</a>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat-tile"><div class="stat-label">Degree progress</div><div class="stat-value">4<span>/5, final yr</span></div></div>
+      <div class="stat-tile"><div class="stat-label">Technical projects</div><div class="stat-value">7<span>+</span></div></div>
+      <div class="stat-tile"><div class="stat-label">Certifications</div><div class="stat-value">8</div></div>
+      <div class="stat-tile"><div class="stat-label">Languages</div><div class="stat-value">3</div></div>
+    </div>
+  </div>
+</header>
+
+<section id="experience">
+  <div class="wrap reveal">
+    <div class="section-head"><span class="section-tag">01</span><span class="section-title">Education & Experience</span></div>
+    <div class="timeline">
+      <div class="tl-axis"><span>2022</span><span>2023</span><span>2024</span><span>2025</span><span>2026</span></div>
+      <div class="tl-row">
+        <div class="tl-label"><strong>Education</strong>BSc Data Science, Univ. of Jeddah</div>
+        <div class="tl-track"><div class="tl-bar bar-edu">Final year — grad 2026/2027</div></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-label"><strong>Xenel Holding</strong>Data Science Intern</div>
+        <div class="tl-track"><div class="tl-bar bar-xenel">230 hrs · completed</div></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-label"><strong>ABT Group</strong>Data Intern</div>
+        <div class="tl-track"><div class="tl-bar bar-xenel">1 month · completed</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="volunteering" style="border-top:none;padding-top:0;">
+  <div class="wrap reveal">
+    <div class="section-head"><span class="section-tag">01.b</span><span class="section-title">Volunteering & Leadership</span></div>
+    <div class="timeline">
+      <div class="tl-row">
+        <div class="tl-label"><strong>Effat University</strong>Event Coordinator (Volunteer)</div>
+        <div class="tl-track"><div class="tl-bar bar-lead">Completed</div></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-label"><strong>Little Smarties</strong>Activity Organizer (Volunteer)</div>
+        <div class="tl-track"><div class="tl-bar bar-lead2">Completed</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="xenel" style="border-top:none;padding-top:0;">
+  <div class="wrap reveal">
+    <div class="project-grid">
+      <div class="project-card featured">
+        <div class="p-eyebrow">Industry Internship · Completed — 230 hrs</div>
+        <div class="p-title">Data Science Intern — Xenel Holding</div>
+        <p class="p-desc">Rotated through enterprise IT and cloud infrastructure: built and deployed a conversational AI agent in Microsoft Copilot Studio trained on internal knowledge bases for real organizational queries, then engineered a comparable assistant on the Claude AI platform to evaluate multi-platform AI deployment. Administered Azure Identity & Access Management — user provisioning, MFA enforcement, and endpoint/device compliance across the company tenant — and studied enterprise networking on Cisco systems, including VLAN segmentation and Cisco Unified Communications Manager for VoIP infrastructure.</p>
+        <div class="tag-row">
+          <span class="tag">Microsoft Copilot Studio</span>
+          <span class="tag">Azure IAM & MFA</span>
+          <span class="tag">Claude AI</span>
+          <span class="tag">Cisco Networking / VLANs</span>
+          <span class="tag">Endpoint Management</span>
+        </div>
+      </div>
+      <div class="project-card featured">
+        <div class="p-eyebrow">Industry Internship · Completed — 1 month</div>
+        <div class="p-title">Data Intern — ABT Group</div>
+        <p class="p-desc">Worked within the SAP ERP system on accounting and controlling data — mapping where financial data resides across modules, and building and analyzing reports to support finance and controlling functions.</p>
+        <div class="tag-row">
+          <span class="tag">SAP ERP</span>
+          <span class="tag">Financial Data Analysis</span>
+          <span class="tag">Reporting</span>
+          <span class="tag">Data Mapping</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="research" style="border-top:none;padding-top:0;">
+  <div class="wrap reveal">
+    <div class="project-grid">
+      <div class="project-card featured">
+        <div class="p-eyebrow">Published Research · Featured</div>
+        <div class="p-title"><a href="https://github.com/raghadsindi/hajj-catering-sentiment-analysis" target="_blank" style="text-decoration:underline;text-underline-offset:3px;">Evaluation of Hajj Catering Service Using Machine Learning and Arabic Sentiment Analysis in Social Media</a></div>
+        <p class="p-desc">Analyzed 4,604 Arabic tweets about Hajj catering services using TF-IDF vectorization and Arabic-specific NLP preprocessing (PyArabic, NLTK). Trained and compared SVM, Random Forest, and XGBoost classifiers, then merged sentiment findings with official DataSaudi logistics indicators (2018/2019/2022 seasons) to trace dissatisfaction back to its operational root cause — a first-of-its-kind combination of Arabic social sentiment with official Hajj logistics data.</p>
+        <div class="tag-row">
+          <span class="tag">SVM — 81.22% Accuracy</span>
+          <span class="tag">TF-IDF</span>
+          <span class="tag">Arabic NLP</span>
+          <span class="tag">5-Fold Cross-Validation</span>
+          <span class="tag">Logistics Data Fusion</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap reveal">
+    <div class="section-head"><span class="section-tag">02</span><span class="section-title">Technical Projects</span></div>
+    <div class="project-grid">
+      <div class="project-card">
+        <div class="p-eyebrow">Machine Learning</div>
+        <div class="p-title"><a href="https://github.com/raghadsindi/burnout-prediction-ml" target="_blank" style="text-decoration:underline;text-underline-offset:3px;">Predictive Modeling of Occupational Burnout Levels</a></div>
+        <p class="p-desc">Built a 3-class burnout classifier (Low / Moderate / High) on a 150,000-record tech-industry dataset with 24 features. Compared Logistic Regression, Random Forest, and SVM; deliberately removed the direct burnout score to prevent data leakage and force the model to learn from genuine behavioral and psychological signals.</p>
+        <div class="tag-row"><span class="tag">SVM — 93.42% Accuracy</span><span class="tag">Scikit-learn</span><span class="tag">Stratified Split</span><span class="tag">Class Imbalance</span></div>
+      </div>
+      <div class="project-card">
+        <div class="p-eyebrow">Business Intelligence</div>
+        <div class="p-title"><a href="https://github.com/raghadsindi/saudi-superstore-bi" target="_blank" style="text-decoration:underline;text-underline-offset:3px;">Saudi Superstore Sales Intelligence System</a></div>
+        <p class="p-desc">End-to-end BI pipeline spanning all three analytics layers: a Power BI dashboard for descriptive analytics across Saudi cities, a Linear Regression model in Altair AI Studio to forecast sales, and a rule-based prescriptive decision tree translating both into concrete business actions for management.</p>
+        <div class="tag-row"><span class="tag">Power BI</span><span class="tag">Linear Regression — R² 0.831</span><span class="tag">Altair AI Studio</span><span class="tag">Decision Trees</span></div>
+      </div>
+      <div class="project-card">
+        <div class="p-eyebrow">Data Visualization</div>
+        <div class="p-title"><a href="https://github.com/raghadsindi/U.S.-Ozone-Air-Quality-Analysis" target="_blank" style="text-decoration:underline;text-underline-offset:3px;">U.S. Ozone Air Quality Analysis</a></div>
+        <p class="p-desc">Analyzed the EPA's Daily Ozone AQI 2020 dataset to surface state-level, seasonal, and geographic pollution patterns, culminating in an interactive Power BI dashboard with dynamic filtering by state, month, and AQI health category.</p>
+        <div class="tag-row"><span class="tag">Power BI</span><span class="tag">EPA Dataset</span><span class="tag">Geospatial Analysis</span><span class="tag">Dashboard Design</span></div>
+      </div>
+      <div class="project-card">
+        <div class="p-eyebrow">Full-Stack</div>
+        <div class="p-title"><a href="https://github.com/raghadsindi/find-my-restaurant" target="_blank" style="text-decoration:underline;text-underline-offset:3px;">Find My Restaurant</a></div>
+        <p class="p-desc">Full-stack restaurant search platform with user authentication, multi-filter search, and a dual-database architecture (MongoDB + SQLite).</p>
+        <div class="tag-row"><span class="tag">MongoDB</span><span class="tag">SQLite</span><span class="tag">Auth</span></div>
+      </div>
+      <div class="project-card">
+        <div class="p-eyebrow">Machine Learning</div>
+        <div class="p-title">Student Performance Predictor</div>
+        <p class="p-desc">Predictive model to flag at-risk students in SAS Enterprise Miner — data cleaning, variable selection, model comparison across decision trees and logistic regression.</p>
+        <div class="tag-row"><span class="tag">SAS Studio</span><span class="tag">Decision Trees</span><span class="tag">Logistic Regression</span></div>
+      </div>
+      <div class="project-card">
+        <div class="p-eyebrow">Statistical Analysis</div>
+        <div class="p-title">Demographic Analysis with HairEyeColor Dataset</div>
+        <p class="p-desc">Exploratory data analysis and linear regression in R examining relationships between hair color, eye color, and gender.</p>
+        <div class="tag-row"><span class="tag">R</span><span class="tag">EDA</span><span class="tag">Linear Regression</span></div>
+      </div>
+      <div class="project-card">
+        <div class="p-eyebrow">Software Engineering</div>
+        <div class="p-title">Airline Management Interface</div>
+        <p class="p-desc">Object-oriented booking system in Java applying core OOP principles for scalable flight and reservation management.</p>
+        <div class="tag-row"><span class="tag">Java</span><span class="tag">OOP</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap reveal">
+    <div class="section-head"><span class="section-tag">03</span><span class="section-title">Skill Matrix</span></div>
+    <div class="matrix">
+      <div class="matrix-col">
+        <div class="matrix-head">Programming & Data</div>
+        <div class="chip-list">
+          <span class="chip">Python</span><span class="chip">SQL</span><span class="chip">R</span>
+          <span class="chip">Pandas</span><span class="chip">NumPy</span><span class="chip">Scikit-learn</span><span class="chip">Java</span>
+        </div>
+      </div>
+      <div class="matrix-col">
+        <div class="matrix-head">Tools & Platforms</div>
+        <div class="chip-list">
+          <span class="chip">Power BI</span><span class="chip">Microsoft Azure</span><span class="chip">Tableau</span>
+          <span class="chip">SAS</span><span class="chip">RapidMiner</span><span class="chip">Streamlit</span><span class="chip">Excel / Sheets</span>
+          <span class="chip">Copilot Studio</span><span class="chip">Cisco Networking</span>
+        </div>
+      </div>
+      <div class="matrix-col">
+        <div class="matrix-head">Concepts & Soft Skills</div>
+        <div class="chip-list">
+          <span class="chip">Statistics</span><span class="chip">Data Mining</span><span class="chip">Feature Engineering</span>
+          <span class="chip">Database Systems</span><span class="chip">Computer Networks</span><span class="chip">Social Media Analysis</span>
+          <span class="chip">Analytical Thinking</span><span class="chip">Communication</span><span class="chip">Problem-Solving</span><span class="chip">Negotiation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="certs">
+  <div class="wrap reveal">
+    <div class="section-head"><span class="section-tag">04</span><span class="section-title">Certifications</span></div>
+    <div class="cert-list">
+      <div class="cert-item"><div class="cert-icon">GA</div><div><div class="cert-name">Google Data Analytics Professional Certificate</div><div class="cert-org">Google</div></div></div>
+      <div class="cert-item"><div class="cert-icon">SAS</div><div><div class="cert-name">Machine Learning Using SAS® Viya</div><div class="cert-org">SAS Academy</div></div></div>
+      <div class="cert-item"><div class="cert-icon">DS</div><div><div class="cert-name">Data Science Specialization</div><div class="cert-org">Coursera</div></div></div>
+      <div class="cert-item"><div class="cert-icon">HW</div><div><div class="cert-name">HCIA-AI V4.0</div><div class="cert-org">Huawei ICT Academy</div></div></div>
+      <div class="cert-item"><div class="cert-icon">HW</div><div><div class="cert-name">HCIA-Big Data V3.5</div><div class="cert-org">Huawei ICT Academy</div></div></div>
+      <div class="cert-item"><div class="cert-icon">HW</div><div><div class="cert-name">openGauss Database Technology and Applications</div><div class="cert-org">Huawei ICT Academy</div></div></div>
+      <div class="cert-item"><div class="cert-icon">HW</div><div><div class="cert-name">Algorithm and Program Design</div><div class="cert-org">Huawei ICT Academy</div></div></div>
+      <div class="cert-item"><div class="cert-icon">HW</div><div><div class="cert-name">Information Representation and Data Organization</div><div class="cert-org">Huawei ICT Academy</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="languages" style="border-bottom:1px solid var(--border);">
+  <div class="wrap reveal">
+    <div class="section-head"><span class="section-tag">05</span><span class="section-title">Languages</span></div>
+    <div class="lang-row">
+      <div class="lang-tile"><div class="lang-name">Arabic</div><div class="lang-level">Native</div></div>
+      <div class="lang-tile"><div class="lang-name">English</div><div class="lang-level">IELTS 7</div></div>
+      <div class="lang-tile"><div class="lang-name">Turkish</div><div class="lang-level">Professional</div></div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    Let's talk data — <a href="mailto:prog.raghad.s@gmail.com">prog.raghad.s@gmail.com</a> · <a href="tel:0549885406">0549885406</a> · <a href="https://www.linkedin.com/in/raghad-s-sindi-02b7a5257" target="_blank">LinkedIn</a>
+  </div>
+</footer>
+
+<script>
+  document.documentElement.classList.add('js-ready');
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:0.1});
+  revealEls.forEach(el=>io.observe(el));
+  // Safety net: ensure everything is visible even if observer misbehaves on some browsers
+  setTimeout(()=>{ revealEls.forEach(el=>el.classList.add('in')); }, 2500);
+</script>
+
+</body>
+</html>
